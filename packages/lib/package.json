@@ -12,7 +12,7 @@
   "dependencies": {
     "@tanstack/react-query": "^4.32.0",
     "@typegoose/typegoose": "^11.3.0",
-    "axios": "^1.4.0",
+    "axios": "^1.6.7",
     "bs58": "^5.0.0",
     "ethers": "5.7.2",
     "http-errors": "^2.0.0",
