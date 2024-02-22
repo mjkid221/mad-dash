@@ -1,24 +1,19 @@
 import { Button } from "@chakra-ui/react";
-// import * as Backpack from "@coral-xyz/wallet-standard";
-// import { useWallet } from "@solana/wallet-adapter-react";
+import { useWallet } from "@solana/wallet-adapter-react";
 
 export const BackpackConnectButton = () => {
-  // const { wallets, select, publicKey } = useWallet();
-  // const backpack = new Backpack();
-  console.log("Backpack Connect Button: ");
+  const { wallets, select } = useWallet();
 
-  // const [phantomWallet, setPhantomWallet] =
-  //   useState<BackpackWallet>();
-  // const getProvider = () => {
-  //   const currentWindow: any = window;
-  //   if ("backpack" in window) {
-  //     const provider = currentWindow.backpack?.solana;
-  //     if (provider?.isBackpack) {
-  //       return provider;
-  //     }
-  //   }
-  //   return null;
-  // };
+  const onClick = () => {
+    const backpackWallet = wallets.find(
+      (wallet) => wallet.adapter.name === "Backpack"
+    );
+    if (!backpackWallet) {
+      window.location.href = "https://backpack.app/";
+      return;
+    }
+    select(backpackWallet?.adapter.name);
+  };
 
-  return <Button onClick={() => {}}>Connect!</Button>;
+  return <Button onClick={onClick}>Connect!</Button>;
 };

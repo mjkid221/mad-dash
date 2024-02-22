@@ -10,18 +10,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tanstack/react-query": "^4.32.0",
     "@typegoose/typegoose": "^11.3.0",
     "axios": "^1.4.0",
+    "bs58": "^5.0.0",
     "ethers": "5.7.2",
     "http-errors": "^2.0.0",
     "mongoose": "^7.3.1",
     "next-connect": "0.13.0",
-    "@tanstack/react-query": "^4.32.0",
     "superjson": "^1.13.1",
     "zod": "^3.21.4"
   },
   "devDependencies": {
     "@mad-land/tsconfig": "*",
+    "@typegoose/typegoose": "^9.7.1",
     "@types/chai": "^4.3.5",
     "@types/http-errors": "^2.0.1",
     "@types/mocha": "^10.0.1",
@@ -29,7 +31,6 @@
     "chai": "^4.3.7",
     "mocha": "^10.2.0",
     "mongodb-memory-server": "^8.13.0",
-    "@typegoose/typegoose": "^9.7.1",
     "typescript": "4.9.5",
     "validator": "^13.9.0"
   }
