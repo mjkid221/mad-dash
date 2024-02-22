@@ -1,4 +1,5 @@
 import { Button, chakra, Flex, Spacer } from "@chakra-ui/react";
+import { BackpackConnectButton } from "@mad-land/ui/shared";
 import Link from "next/link";
 
 import { DarkModeButton } from "../dark-mode/DarkModeButton";
@@ -21,6 +22,7 @@ export const Navbar = () => (
       <Button>API Docs</Button>
     </Link>
     <Spacer />
+    <BackpackConnectButton />
     <DarkModeButton />
   </NavbarContainer>
 );

@@ -1,4 +1,4 @@
-import { HealthCheckResponse, apiHandler } from "@scope/lib";
+import { HealthCheckResponse, apiHandler } from "@mad-land/lib";
 import { NextApiResponse } from "next/types";
 
 export default apiHandler()
