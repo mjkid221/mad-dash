@@ -1,27 +1,55 @@
 import "@total-typescript/ts-reset";
 import { ChakraProvider } from "@chakra-ui/react";
-import { Navbar, theme, useProviderConfig } from "@scope/ui";
+import { SOLANA_RPC_PROVIDER } from "@mad-land/lib";
+import { Navbar, theme } from "@mad-land/ui";
+import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
+import {
+  ConnectionProvider,
+  WalletProvider,
+} from "@solana/wallet-adapter-react";
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
+import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
+import { clusterApiUrl } from "@solana/web3.js";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ThirdwebProvider } from "@thirdweb-dev/react";
 import { Analytics } from "@vercel/analytics/react";
 import { AppProps } from "next/app";
-import { useState } from "react";
+import Head from "next/head";
+import { SessionProvider } from "next-auth/react";
+import { useMemo, useState } from "react";
 
 import { trpc } from "@/utils/trpc";
+
+import "@solana/wallet-adapter-react-ui/styles.css";
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   const [queryClient] = useState(() => new QueryClient());
 
+  const endpoint = useMemo(
+    () => SOLANA_RPC_PROVIDER || clusterApiUrl(WalletAdapterNetwork.Devnet),
+    []
+  );
+
+  const wallets = useMemo(() => [new PhantomWalletAdapter()], []);
   return (
-    <ThirdwebProvider {...useProviderConfig()}>
-      <QueryClientProvider client={queryClient}>
-        <ChakraProvider theme={theme}>
-          <Analytics />
-          <Navbar />
-          <Component {...pageProps} />
-        </ChakraProvider>
-      </QueryClientProvider>
-    </ThirdwebProvider>
+    <QueryClientProvider client={queryClient}>
+      <SessionProvider refetchInterval={0} session={pageProps.session}>
+        <ConnectionProvider endpoint={endpoint}>
+          <WalletProvider wallets={wallets} autoConnect>
+            <WalletModalProvider>
+              <ChakraProvider theme={theme}>
+                <Head>
+                  <title>Mad Land</title>
+                  <link rel="shortcut icon" href="/mad-land-favicon.ico" />
+                </Head>
+                <Analytics />
+                <Navbar />
+                <Component {...pageProps} />
+              </ChakraProvider>
+            </WalletModalProvider>
+          </WalletProvider>
+        </ConnectionProvider>
+      </SessionProvider>
+    </QueryClientProvider>
   );
 };
 

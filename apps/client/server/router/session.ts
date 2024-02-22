@@ -1,4 +1,4 @@
-import { Session, UnauthorizedError } from "@scope/lib";
+import { Session, UnauthorizedError } from "@mad-land/lib";
 
 import { protectedProcedure, router } from "@/server/trpc";
 

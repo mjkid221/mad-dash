@@ -1,1 +1,1 @@
-export * from "./third-web";
+export * from "./siws-provider";

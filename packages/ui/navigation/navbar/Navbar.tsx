@@ -1,5 +1,4 @@
-import { Button, chakra, Flex, Spacer, useColorMode } from "@chakra-ui/react";
-import { ConnectWallet } from "@thirdweb-dev/react";
+import { Button, chakra, Flex, Spacer } from "@chakra-ui/react";
 import Link from "next/link";
 
 import { DarkModeButton } from "../dark-mode/DarkModeButton";
@@ -22,10 +21,6 @@ export const Navbar = () => (
       <Button>API Docs</Button>
     </Link>
     <Spacer />
-    <ConnectWallet
-      theme={useColorMode().colorMode}
-      style={{ height: "50px" }}
-    />
     <DarkModeButton />
   </NavbarContainer>
 );

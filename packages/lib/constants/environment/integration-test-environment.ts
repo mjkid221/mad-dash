@@ -8,6 +8,4 @@ export const integrationTestEnvironment: Record<string, string> = {
    */
   MONGODB_URI: "test-mongo-db-uri",
   INTEGRATION_TEST_MODE: "true",
-  THIRDWEB_AUTH_PRIVATE_KEY:
-    "d68c113c13c731e5fc34e1a7d0ea087895c2926bea29d95e8d2f09ccc086d34c",
 };

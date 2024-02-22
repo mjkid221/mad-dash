@@ -1,5 +1,5 @@
 {
-  "extends": "@scope/tsconfig/base.json",
+  "extends": "@mad-land/tsconfig/base.json",
   "compilerOptions": {
     "outDir": "./dist",
     "target": "es2020",

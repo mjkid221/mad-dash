@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
-  transpilePackages: ["@scope/ui", "@scope/lib", "@scope/contracts"],
+  transpilePackages: ["@mad-land/ui", "@mad-land/lib", "@mad-land/contracts"],
 };
 
 // Injected content via Sentry wizard below

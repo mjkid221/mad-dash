@@ -1,3 +1,8 @@
 
 # Sentry Auth Token
 .sentryclirc
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault

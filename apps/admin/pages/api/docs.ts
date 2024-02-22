@@ -1,4 +1,4 @@
-import { getBaseUrl } from "@scope/lib/utils";
+import { getBaseUrl } from "@mad-land/lib/utils";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { renderTrpcPanel } from "trpc-panel";
 

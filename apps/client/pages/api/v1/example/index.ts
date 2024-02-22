@@ -1,4 +1,8 @@
-import { ExampleResponse, apiHandler, exampleRequestSchema } from "@scope/lib";
+import {
+  ExampleResponse,
+  apiHandler,
+  exampleRequestSchema,
+} from "@mad-land/lib";
 import { NextApiRequest, NextApiResponse } from "next/types";
 
 /**

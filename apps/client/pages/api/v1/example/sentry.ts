@@ -1,4 +1,4 @@
-import { apiHandler } from "@scope/lib";
+import { apiHandler } from "@mad-land/lib";
 
 export default apiHandler()
   /**

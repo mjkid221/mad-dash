@@ -5,17 +5,9 @@
  *
  */
 
-const NEXT_CLIENT_ENV_KEYS = [
-  "NEXT_PUBLIC_MAGIC_API_KEY",
-  "NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID",
-  "NEXT_PUBLIC_THIRDWEB_CLIENT_ID",
-] as const;
+const NEXT_CLIENT_ENV_KEYS = [] as const;
 
-const NEXT_SERVER_ENV_KEYS = [
-  "MONGODB_URI",
-  // "THIRD_PART_SECRET_KEY", // Needed if using the `secretKeyAuth` middleware
-  "THIRDWEB_AUTH_PRIVATE_KEY",
-] as const;
+const NEXT_SERVER_ENV_KEYS = [] as const;
 
 export enum EnvironmentType {
   Client = "CLIENT",
