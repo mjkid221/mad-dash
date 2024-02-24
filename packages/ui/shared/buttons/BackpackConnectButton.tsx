@@ -15,7 +15,8 @@ import { siwsOptions } from "../../config";
 import { useSessionAddress } from "../../hooks/use-session-address";
 
 export const BackpackConnectButton = () => {
-  const { publicKey, wallets, select, signMessage, connected } = useWallet();
+  const { publicKey, wallets, select, signMessage, connected, disconnect } =
+    useWallet();
   const { address, isConnected } = useSessionAddress();
 
   const onClick = useCallback(async () => {
@@ -57,16 +58,16 @@ export const BackpackConnectButton = () => {
   }, [isConnected, onClick, publicKey, signMessage]);
 
   useEffect(() => {
-    if (!connected && !isConnected) {
+    if (connected && !isConnected) {
       handleSignIn();
     }
   }, [connected, handleSignIn, isConnected]);
 
   const switchIconStateSrc = isConnected ? BACKPACK_RED : BACKPACK_WHITE;
 
-  const handleSignOut = () => {
+  const handleClick = () => {
     if (isConnected) {
-      signOut();
+      disconnect().then(() => signOut());
       return;
     }
     handleSignIn();
@@ -85,7 +86,7 @@ export const BackpackConnectButton = () => {
       alignItems="center"
       justifyContent="center"
       _hover={{ cursor: "pointer", borderColor: "white" }}
-      onClick={handleSignOut}
+      onClick={handleClick}
       data-tooltip-id="wallet-connect"
     >
       <Image

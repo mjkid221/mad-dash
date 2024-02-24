@@ -17,9 +17,10 @@ module.exports = withSentryConfig(
     silent: true,
 
     // You can get this from the Organization settings page in Sentry
-    org: "UPDATE_THIS_TO_THE_ORGANIZATION_SLUG",
+    org: "avalon-labs-dp",
     // You can get this from the Project settings page in Sentry
-    project: "UPDATE_THIS_TO_THE_PROJECT_NAME",
+    project: "mad-land",
+    authToken: process.env.SENTRY_AUTH_TOKEN,
   },
   {
     // For all available options, see:

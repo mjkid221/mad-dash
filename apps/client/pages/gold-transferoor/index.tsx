@@ -1,5 +1,7 @@
 import { StandardPageContainer } from "@mad-land/ui";
 
-export const GoldTransferoor = () => {
-  <StandardPageContainer>d</StandardPageContainer>;
+const GoldTransfer = () => {
+  <StandardPageContainer>Transfer</StandardPageContainer>;
 };
+
+export default GoldTransfer;
