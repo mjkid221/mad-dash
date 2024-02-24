@@ -1,7 +1,7 @@
 import bs58 from "bs58";
 import nacl from "tweetnacl";
 
-type SignMessage = {
+export type SiwsMessageOptions = {
   domain: string;
   publicKey: string;
   nonce: string;
@@ -18,7 +18,7 @@ export class SiwsProvider {
 
   statement: string;
 
-  constructor({ domain, publicKey, nonce, statement }: SignMessage) {
+  constructor({ domain, publicKey, nonce, statement }: SiwsMessageOptions) {
     this.domain = domain;
     this.publicKey = publicKey;
     this.nonce = nonce;

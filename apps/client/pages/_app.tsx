@@ -14,7 +14,9 @@ import { Analytics } from "@vercel/analytics/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { SessionProvider } from "next-auth/react";
+import PageLoading from "nextjs-progressbar";
 import { useMemo, useState } from "react";
+import AnimatedCursor from "react-animated-cursor";
 
 import { trpc } from "@/utils/trpc";
 
@@ -29,6 +31,12 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   );
 
   const wallets = useMemo(() => [], []);
+
+  const defaultTheme = {
+    color: "white",
+    bg: theme.colors.red[900],
+  };
+
   return (
     <QueryClientProvider client={queryClient}>
       <SessionProvider refetchInterval={0} session={pageProps.session}>
@@ -42,7 +50,12 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
                 </Head>
                 <Analytics />
                 <Navbar />
-                <Component {...pageProps} />
+                <PageLoading
+                  color={defaultTheme.bg}
+                  options={{ showSpinner: false }}
+                />
+                <Component {...pageProps} {...defaultTheme} />
+                <AnimatedCursor />
               </ChakraProvider>
             </WalletModalProvider>
           </WalletProvider>
