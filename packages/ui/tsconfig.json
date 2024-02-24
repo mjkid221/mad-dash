@@ -1,5 +1,5 @@
 {
   "extends": "@mad-land/tsconfig/react-library.json",
-  "include": [".", "../lib/constants/navigation.tsx"],
+  "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }
