@@ -41,7 +41,7 @@ export const navigationItems: NavItems = [
       {
         // label: "Twitter",
         icon: NavigationIconSelector.Twitter,
-        href: "https://twitter.com",
+        href: "https://twitter.com/MadLads",
       },
     ],
   },
