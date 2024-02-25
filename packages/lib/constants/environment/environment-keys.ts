@@ -7,7 +7,7 @@
 
 const NEXT_CLIENT_ENV_KEYS = [] as const;
 
-const NEXT_SERVER_ENV_KEYS = [] as const;
+const NEXT_SERVER_ENV_KEYS = ["NEXTAUTH_SECRET"] as const;
 
 export enum EnvironmentType {
   Client = "CLIENT",

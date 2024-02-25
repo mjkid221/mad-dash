@@ -1,42 +1,32 @@
-import { Button, chakra, Flex, Spacer } from "@chakra-ui/react";
-import { BackpackConnectButton } from "@mad-land/ui/shared";
-import Link from "next/link";
-
-import { DarkModeButton } from "../dark-mode/DarkModeButton";
+import { chakra, Flex } from "@chakra-ui/react";
+import { NAVBAR_HEIGHT } from "@mad-land/lib";
+import { DesktopNav } from "@mad-land/ui";
+import { ReactNode } from "react";
 
 export const Navbar = () => (
-  <NavbarContainer>
-    <Link href="/">
-      <Button>Home</Button>
-    </Link>
-    <Link href="/example">
-      <Button>Example</Button>
-    </Link>
-    <Link href="/example-trpc">
-      <Button>Example - tRPC</Button>
-    </Link>
-    <Link href="/zustand">
-      <Button>Zustand</Button>
-    </Link>
-    <Link href="/api/docs">
-      <Button>API Docs</Button>
-    </Link>
-    <Spacer />
-    <BackpackConnectButton />
-    <DarkModeButton />
-  </NavbarContainer>
+  <StandardNavbarWrapper>
+    <NavbarContainer>
+      <Flex display={{ base: "none", md: "flex" }}>
+        <DesktopNav />
+      </Flex>
+    </NavbarContainer>
+  </StandardNavbarWrapper>
+);
+const StandardNavbarWrapper = ({ children }: { children: ReactNode }) => (
+  <Flex width="100%" pos="sticky" zIndex={99}>
+    {children}
+  </Flex>
 );
 
 const NavbarContainer = chakra(Flex, {
   baseStyle: {
+    position: "absolute",
+    height: NAVBAR_HEIGHT,
+    py: "32px",
+    px: "36px",
     alignItems: "center",
-    justifyContent: "flex-start",
-    h: "60px",
-    px: "10px",
-    boxShadow: "base",
-    position: "fixed",
-    w: "full",
-    zIndex: "999",
+    justifyContent: "flex-end",
     gap: "10px",
+    w: "full",
   },
 });

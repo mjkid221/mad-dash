@@ -1,20 +1,14 @@
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { MAD_LADS_LOGO } from "@mad-land/lib";
+import { StandardPageContainer } from "@mad-land/ui/shared";
 import { NextPage } from "next";
-import Link from "next/link";
 
 const HomePage: NextPage = () => (
-  <Flex
-    p="20px"
-    justifyContent="center"
-    alignItems="center"
-    h="100vh"
-    flexDirection="column"
-  >
-    <Text fontSize="100px">🚀</Text>
-    <Link href="/example">
-      <Button>Go to example page</Button>
-    </Link>
-  </Flex>
+  <StandardPageContainer
+    bgImage={MAD_LADS_LOGO}
+    backgroundSize="480px"
+    backgroundPosition="center"
+    backgroundRepeat="no-repeat"
+  />
 );
 
 export default HomePage;
