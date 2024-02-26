@@ -32,37 +32,27 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
             JSON.parse(credentials?.message || "{}") as SiwsMessageOptions
           );
           const nextAuthUrl = generateUrl(req as NextApiRequest);
-          console.log("Domain mismatch", signinMessage.domain);
-          console.log(" nextAuthUrl.host: ", nextAuthUrl);
           if (signinMessage.domain !== nextAuthUrl.host) {
             return null;
           }
 
-          console.log("Checkpoint 1");
-          console.log("signinMessage: ", signinMessage);
-          console.log("req: ", req);
           const csrfToken = await getCsrfToken({ req: { ...req, body: null } });
-          console.log("csrfToken: ", csrfToken);
+
           if (signinMessage.nonce !== csrfToken) {
             return null;
           }
-          console.log("Checkpoint 2");
 
           const validationResult = await signinMessage.validate(
             credentials?.signature || ""
           );
-          console.log("Checkpoint 3");
 
           if (!validationResult)
             throw new Error("Could not validate the signed message");
-          console.log("Checkpoint 4");
 
           return {
             id: signinMessage.publicKey,
           };
         } catch (e) {
-          console.log("Checkpoint 5");
-
           return null;
         }
       },
