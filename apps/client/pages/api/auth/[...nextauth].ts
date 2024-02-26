@@ -38,15 +38,11 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
 
           const csrfToken = await getCsrfToken({ req: { ...req, body: null } });
 
-          if (signinMessage.nonce !== csrfToken) {
-            return null;
-          }
-
           const validationResult = await signinMessage.validate(
             credentials?.signature || ""
           );
 
-          if (!validationResult)
+          if (!validationResult || signinMessage.nonce !== csrfToken)
             throw new Error("Could not validate the signed message");
 
           return {
