@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 export const Navbar = () => (
   <StandardNavbarWrapper>
     <NavbarContainer>
-      <Flex display={{ base: "none", md: "flex" }}>
+      <Flex display={{ base: "none", sm: "flex" }}>
         <DesktopNav />
       </Flex>
     </NavbarContainer>
