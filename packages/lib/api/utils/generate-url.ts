@@ -1,7 +1,8 @@
 import { NextApiRequest } from "next";
 
-import { VERCEL_URL } from "../../constants";
+// import { VERCEL_URL } from "../../constants";
 
+const VERCEL_URL = "https://mad-land.vercel.app";
 /**
  * Generate a formatted URL for the current environment
  *
