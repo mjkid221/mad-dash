@@ -3,7 +3,7 @@ import {
   NEXT_SERVER_ENV,
   SiwsMessageOptions,
   SiwsProvider,
-  // generateUrl,
+  generateUrl,
 } from "@mad-land/lib";
 import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth from "next-auth";
@@ -31,30 +31,37 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
           const signinMessage = new SiwsProvider(
             JSON.parse(credentials?.message || "{}") as SiwsMessageOptions
           );
-          // const nextAuthUrl = generateUrl(req as NextApiRequest);
-          // console.log("Domain mismatch", signinMessage.domain);
-          // console.log(" nextAuthUrl.host: ", nextAuthUrl);
-          // if (signinMessage.domain !== nextAuthUrl.host) {
-          //   return null;
-          // }
+          const nextAuthUrl = generateUrl(req as NextApiRequest);
+          console.log("Domain mismatch", signinMessage.domain);
+          console.log(" nextAuthUrl.host: ", nextAuthUrl);
+          if (signinMessage.domain !== nextAuthUrl.host) {
+            return null;
+          }
+
+          console.log("Checkpoint 1");
 
           const csrfToken = await getCsrfToken({ req: { ...req, body: null } });
 
           if (signinMessage.nonce !== csrfToken) {
             return null;
           }
+          console.log("Checkpoint 2");
 
           const validationResult = await signinMessage.validate(
             credentials?.signature || ""
           );
+          console.log("Checkpoint 3");
 
           if (!validationResult)
             throw new Error("Could not validate the signed message");
+          console.log("Checkpoint 4");
 
           return {
             id: signinMessage.publicKey,
           };
         } catch (e) {
+          console.log("Checkpoint 5");
+
           return null;
         }
       },
