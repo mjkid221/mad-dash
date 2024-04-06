@@ -5,9 +5,16 @@
  *
  */
 
-const NEXT_CLIENT_ENV_KEYS = [] as const;
+const NEXT_CLIENT_ENV_KEYS = [
+  "NEXT_PUBLIC_SOLANA_RPC_PROVIDER",
+  "NEXT_PUBLIC_SHYFT_API_KEY",
+] as const;
 
-const NEXT_SERVER_ENV_KEYS = ["NEXTAUTH_SECRET"] as const;
+const NEXT_SERVER_ENV_KEYS = [
+  "NEXTAUTH_SECRET",
+  "MONGODB_URI",
+  "THIRD_PARTY_SECRET_KEY",
+] as const;
 
 export enum EnvironmentType {
   Client = "CLIENT",
