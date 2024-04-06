@@ -1,0 +1,2 @@
+export const MAD_LADS_COLLECTION_ADDRESS =
+  "J1S9H3QjnRtBbbuD4HjPV6RpRhwuk4zKbxsnCHuTgh9w";

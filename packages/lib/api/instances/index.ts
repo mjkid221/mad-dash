@@ -9,3 +9,7 @@ import axios from "axios";
 export const baseApiInstance = axios.create({
   baseURL: "/api/v1",
 });
+
+export const howRareApiInstance = axios.create({
+  baseURL: "https://api.howrare.is/v0.1/collections/",
+});
