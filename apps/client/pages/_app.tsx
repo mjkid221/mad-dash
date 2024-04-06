@@ -17,10 +17,13 @@ import { SessionProvider } from "next-auth/react";
 import PageLoading from "nextjs-progressbar";
 import { useMemo, useState } from "react";
 import AnimatedCursor from "react-animated-cursor";
-
-import { trpc } from "@/utils/trpc";
+import { ToastContainer } from "react-toastify";
 
 import "@solana/wallet-adapter-react-ui/styles.css";
+import "react-toastify/dist/ReactToastify.css";
+import "swiper/css";
+import "swiper/css/effect-cards";
+import "../styles/swiper.css";
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   const [queryClient] = useState(() => new QueryClient());
@@ -29,8 +32,6 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
     () => SOLANA_RPC_PROVIDER || clusterApiUrl(WalletAdapterNetwork.Devnet),
     []
   );
-
-  const wallets = useMemo(() => [], []);
 
   const defaultTheme = {
     color: "white",
@@ -41,7 +42,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
     <QueryClientProvider client={queryClient}>
       <SessionProvider refetchInterval={0} session={pageProps.session}>
         <ConnectionProvider endpoint={endpoint}>
-          <WalletProvider wallets={wallets} autoConnect>
+          <WalletProvider wallets={[]} autoConnect>
             <WalletModalProvider>
               <ChakraProvider theme={theme}>
                 <Head>
@@ -50,6 +51,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
                 </Head>
                 <Analytics />
                 <Navbar />
+                <ToastContainer theme="dark" position="top-left" closeOnClick />
                 <PageLoading
                   color={defaultTheme.bg}
                   options={{ showSpinner: false }}
@@ -65,4 +67,4 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   );
 };
 
-export default trpc.withTRPC(App);
+export default App;

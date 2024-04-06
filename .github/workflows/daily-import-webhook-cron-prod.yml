@@ -1,0 +1,15 @@
+# from https://vercel.com/guides/how-to-setup-cron-jobs-on-vercel
+name: (Prod) Run daily cron jobs
+on:
+  schedule:
+    - cron: '0 0 * * *' # At 00:00 every day
+jobs:
+  cron:
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Import Mad Lads Collection Holders Snapshot
+        run: |
+          curl --request GET \
+          --url 'https://mad-land-client.vercel.app/api/v1/webhooks/snapshot/holders/mad-lads' \
+          --header 'Authorization: Bearer ${{ secrets.ACTIONS_CRON_SECRET }}'

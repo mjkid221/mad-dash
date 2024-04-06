@@ -22,24 +22,30 @@ export const navigationItems: NavItems = [
     href: "/",
   },
   {
+    label: "Staking",
+    href: "/staking",
+  },
+  {
     label: "Gold Transferoor",
     href: "/gold-transferoor",
   },
   {
-    label: "P2P Trading",
-    href: "/",
+    label: "Airdropper",
+    href: "/airdropper",
+  },
+  {
+    label: "P2P",
+    href: "/p2p",
     isDisabled: true,
   },
   {
     label: "Official Links",
     children: [
       {
-        // label: "Mad Lads",
         icon: NavigationIconSelector.MadLads,
         href: "https://madlads.com",
       },
       {
-        // label: "Twitter",
         icon: NavigationIconSelector.Twitter,
         href: "https://twitter.com/MadLads",
       },

@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["typechain"],
+  "cSpell.words": ["Metaplex", "typechain"],
   "prettier.useEditorConfig": false,
   "prettier.configPath": ".prettierrc.json",
   "editor.formatOnSave": true,
