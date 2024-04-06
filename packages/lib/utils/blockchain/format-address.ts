@@ -5,7 +5,7 @@
  * @param trailLength - The length of the trailing characters to display
  */
 export const formatAddress = (
-  address: string,
+  address?: string,
   leadLength = 8,
   trailLength = 5
 ): string => {

@@ -8,18 +8,17 @@ import {
 import { useWallet } from "@solana/wallet-adapter-react";
 import bs58 from "bs58";
 import { getCsrfToken, signIn, signOut } from "next-auth/react";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { Tooltip } from "react-tooltip";
 
 import { siwsOptions } from "../../config";
 import { useSessionAddress } from "../../hooks/use-session-address";
 
 export const BackpackConnectButton = () => {
-  const { publicKey, wallets, select, signMessage, connected, disconnect } =
-    useWallet();
+  const { publicKey, wallets, select, signMessage, connected } = useWallet();
   const { address, isConnected } = useSessionAddress();
 
-  const onClick = useCallback(async () => {
+  const handleWalletConnect = useCallback(async () => {
     const backpackWallet = wallets.find(
       (wallet) => wallet.adapter.name === "Backpack"
     );
@@ -32,8 +31,8 @@ export const BackpackConnectButton = () => {
 
   const handleSignIn = useCallback(async () => {
     try {
-      if (!isConnected) {
-        onClick();
+      if (!connected) {
+        handleWalletConnect();
       }
       const csrf = await getCsrfToken();
       if (!publicKey || !csrf || !signMessage) return;
@@ -55,19 +54,13 @@ export const BackpackConnectButton = () => {
     } catch (err) {
       console.log(err);
     }
-  }, [isConnected, onClick, publicKey, signMessage]);
-
-  useEffect(() => {
-    if (connected && !isConnected) {
-      handleSignIn();
-    }
-  }, [connected, handleSignIn, isConnected]);
+  }, [connected, handleWalletConnect, publicKey, signMessage]);
 
   const switchIconStateSrc = isConnected ? BACKPACK_RED : BACKPACK_WHITE;
 
-  const handleClick = () => {
+  const onClick = () => {
     if (isConnected) {
-      disconnect().then(() => signOut());
+      signOut();
       return;
     }
     handleSignIn();
@@ -86,7 +79,7 @@ export const BackpackConnectButton = () => {
       alignItems="center"
       justifyContent="center"
       _hover={{ cursor: "pointer", borderColor: "white" }}
-      onClick={handleClick}
+      onClick={onClick}
       data-tooltip-id="wallet-connect"
     >
       <Image

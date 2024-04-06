@@ -51,6 +51,7 @@ export const Forbidden = createError(403, "Forbidden");
 export const NotFound = createError(404, "Not Found");
 export const Conflict = createError(409, "Record Already Exists");
 export const InternalServerError = createError(500, "Internal Server Error");
+export const ResourceNotFound = createError(501, "Resource Not Found");
 
 // ENVIRONMENT ERRORS
 
@@ -59,3 +60,16 @@ export const DatabaseURIMissing = createError(500, "Missing Database URI");
 // API ERRORS
 
 export const NotImplemented = createError(501, "Not Implemented");
+export const UnableToImportCollectionSnapshot = createError(
+  500,
+  "Unable to import collection snapshot"
+);
+
+// CONTRACT ERRORS
+export const SignatureNotFound = createError(500, "Signature not found");
+export const SignatureConfirmationNotFound = createError(
+  500,
+  "Signature confirmation not found"
+);
+export const MissingSigner = createError(500, "Please connect your wallet.");
+export const MissingToken = createError(500, "You have not selected a token.");
