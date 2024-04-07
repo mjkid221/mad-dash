@@ -36,6 +36,7 @@ export interface IFormInput<T extends FieldValues>
   placeholder?: string;
   leftAddon?: ReactNode;
   rightAddon?: ReactNode;
+  showFormInvalidationErr?: boolean;
   leftAddonProps?: InputAddonProps;
   rightAddonProps?: InputAddonProps;
 }
@@ -56,6 +57,7 @@ export const FormInput = <T extends FieldValues>({
   isDisabled,
   leftAddonProps,
   rightAddonProps,
+  showFormInvalidationErr,
   ...props
 }: IFormInput<T>) => (
   <FormControl isInvalid={!!errors[field]} isDisabled={isDisabled}>
@@ -125,7 +127,9 @@ export const FormInput = <T extends FieldValues>({
         </InputRightAddon>
       )}
     </InputGroup>
-    <ErrorMessage>{get(errors, field)?.message?.toString()}</ErrorMessage>
+    {showFormInvalidationErr && (
+      <ErrorMessage>{get(errors, field)?.message?.toString()}</ErrorMessage>
+    )}
   </FormControl>
 );
 

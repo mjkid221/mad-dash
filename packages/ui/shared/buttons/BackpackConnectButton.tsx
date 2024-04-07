@@ -8,14 +8,22 @@ import {
 import { useWallet } from "@solana/wallet-adapter-react";
 import bs58 from "bs58";
 import { getCsrfToken, signIn, signOut } from "next-auth/react";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { Tooltip } from "react-tooltip";
 
 import { siwsOptions } from "../../config";
 import { useSessionAddress } from "../../hooks/use-session-address";
 
 export const BackpackConnectButton = () => {
-  const { publicKey, wallets, select, signMessage, connected } = useWallet();
+  const {
+    publicKey,
+    wallets,
+    select,
+    signMessage,
+    connected,
+    disconnect,
+    connecting,
+  } = useWallet();
   const { address, isConnected } = useSessionAddress();
 
   const handleWalletConnect = useCallback(async () => {
@@ -58,13 +66,25 @@ export const BackpackConnectButton = () => {
 
   const switchIconStateSrc = isConnected ? BACKPACK_RED : BACKPACK_WHITE;
 
-  const onClick = () => {
+  const onClick = async () => {
     if (isConnected) {
-      signOut();
+      disconnect().then(() => signOut());
       return;
     }
     handleSignIn();
   };
+
+  useEffect(() => {
+    // Automatically sign in if connected and not signed in
+    // The delay is to allow the wallet hook to return the correct state during mount
+    const timer = setTimeout(() => {
+      if (publicKey && !isConnected) {
+        handleSignIn();
+      }
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [connecting, handleSignIn, isConnected, publicKey]);
 
   const tooltipLabel = isConnected
     ? `Disconnect ${formatAddress(address ?? "", 4, 4)}`

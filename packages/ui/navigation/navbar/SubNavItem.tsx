@@ -18,7 +18,7 @@ export const SubNavItem = forwardRef(
     const isSelected = router.asPath === href;
     return (
       <Link
-        href={href}
+        href={isDisabled ? "/" : href}
         _hover={{ textDecoration: "none" }}
         ref={ref}
         _disabled={isDisabled}

@@ -60,5 +60,5 @@ export const getSnapshotDate = async () => {
       updatedAt: -1,
     })
     .lean();
-  return madLadsHolders?.updatedAt;
+  return madLadsHolders?.updatedAt || null;
 };

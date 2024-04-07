@@ -3,6 +3,7 @@ type AsyncOrSyncFunction = () => void | Promise<void>;
 export enum NavigationIconSelector {
   MadLads = "madLads",
   Twitter = "twitter",
+  Discord = "discord",
 }
 
 export interface NavItem {
@@ -20,10 +21,6 @@ export const navigationItems: NavItems = [
   {
     label: "Home",
     href: "/",
-  },
-  {
-    label: "Staking",
-    href: "/staking",
   },
   {
     label: "Gold Transferoor",
@@ -48,6 +45,10 @@ export const navigationItems: NavItems = [
       {
         icon: NavigationIconSelector.Twitter,
         href: "https://twitter.com/MadLads",
+      },
+      {
+        icon: NavigationIconSelector.Discord,
+        href: "https://discord.gg/madlads",
       },
     ],
   },

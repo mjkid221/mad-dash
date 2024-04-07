@@ -44,7 +44,7 @@ export const AirdropTokenSelectorCard = ({
   ]);
   const { data: airdropDistributionResult } = useComputeAirdropDistribution({
     data: holdersData,
-    distributionAmount,
+    distributionAmount: distributionAmount * 10 ** (token?.tokenDecimals ?? 0),
     isWeighted,
   });
 
@@ -66,6 +66,7 @@ export const AirdropTokenSelectorCard = ({
   const isDisabled =
     !formMethods.formState.isValid ||
     (token?.tokenBalanceUI ?? 0) < distributionAmount ||
+    !distributionAmount ||
     isDistributing;
 
   const disableOverride = {
@@ -96,7 +97,7 @@ export const AirdropTokenSelectorCard = ({
                     name="Distribution Amount"
                     placeholder="Amount"
                     registerOptions={{ required: true }}
-                    type="number"
+                    type="decimal"
                     leftAddon="MAX"
                     leftAddonProps={{
                       onClick: () =>
@@ -120,7 +121,13 @@ export const AirdropTokenSelectorCard = ({
                         <Checkbox
                           colorScheme="red"
                           defaultChecked={field.value}
-                          onChange={(e) => field.onChange(e.target.checked)}
+                          onChange={(e) => {
+                            formMethods.setValue(
+                              "isWeighted",
+                              e.target.checked
+                            );
+                            field.onChange(e.target.checked);
+                          }}
                           {...disableOverride}
                         >
                           Weighted
