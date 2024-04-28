@@ -10,8 +10,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { StandardSkeleton } from "../components";
 import { useSessionAddress } from "../hooks/use-session-address";
+import { StandardContainer } from "../shared";
 
-import { StandardContainer, StandardHeader } from "./shared";
+import { StandardHeader } from "./shared";
 
 export const HolderSnapshotCardComponent = ({
   lastSnapshotDate,

@@ -1,6 +1,8 @@
 import { prop, modelOptions, Severity } from "@typegoose/typegoose";
 import type { DocumentType, Ref } from "@typegoose/typegoose";
 
+import { LadBadge } from "../../types/collection";
+
 import { ClassBase } from "./class-base";
 import { NftCollectionClass } from "./nft-collection-class";
 
@@ -36,6 +38,12 @@ export class CollectionMintClass extends ClassBase {
   @prop({ required: false })
   public image?: string;
 
+  /**
+   * Image blurhash used with react-blurhash. Quick loading image placeholder.
+   */
+  @prop({ required: false })
+  public imageBlurhash?: string;
+
   @prop({ required: false })
   public attributes?: {
     name: string;
@@ -45,6 +53,12 @@ export class CollectionMintClass extends ClassBase {
 
   @prop({ required: false })
   public rank?: number;
+
+  @prop({ required: false, enum: LadBadge, type: String, default: [] })
+  public badges?: LadBadge[];
+
+  @prop({ required: false })
+  public wormholeVestingPubkey?: string;
 }
 
 // Document type

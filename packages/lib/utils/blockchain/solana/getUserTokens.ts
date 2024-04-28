@@ -7,7 +7,7 @@ import {
   AccountInfo,
 } from "@solana/web3.js";
 
-import { MetaplexService } from "../../../services";
+import { MetaplexService } from "../../../services/metaplex";
 import { UserTokensType } from "../../../types";
 
 import { solanaEndpoint } from "./endpoint";

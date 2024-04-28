@@ -12,7 +12,7 @@ export const DistributionChart = ({
   const { token } = useTokenSelectStore();
 
   return (
-    <Flex height="70%" p="8px" justifyContent="center" {...props}>
+    <Flex height="70%" width="99%" p="8px" justifyContent="center" {...props}>
       <Doughnut
         data={{
           labels: distributionData.map((holder) => holder.userAddress),

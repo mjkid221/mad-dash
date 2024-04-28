@@ -16,10 +16,9 @@ import { toast } from "react-toastify";
 
 import { FormInput } from "../forms";
 import { useSessionAddress } from "../hooks/use-session-address";
-import { animatedHoverProps } from "../shared";
+import { StandardContainer, animatedHoverProps } from "../shared";
 
 import { DistributionChart } from "./DistributionChart";
-import { StandardContainer } from "./shared";
 import { TokenSelector } from "./TokenSelector";
 
 export const AirdropTokenSelectorCard = ({
