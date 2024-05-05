@@ -4,7 +4,7 @@ import {
   BACKPACK_WHITE,
   SiwsProvider,
   formatAddress,
-} from "@mad-land/lib";
+} from "@mad-dash/lib";
 import { useWallet } from "@solana/wallet-adapter-react";
 import bs58 from "bs58";
 import { getCsrfToken, signIn, signOut } from "next-auth/react";

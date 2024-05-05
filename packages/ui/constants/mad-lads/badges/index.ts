@@ -1,4 +1,4 @@
-import { LadBadge } from "@mad-land/lib";
+import { LadBadge } from "@mad-dash/lib";
 
 interface MadLadBadgeInfo {
   src: string;

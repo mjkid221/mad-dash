@@ -1,5 +1,5 @@
 import { Stack, Text, Box, Flex, Image, useTheme } from "@chakra-ui/react";
-import { MAD_LADS_LOGO, NavItem, NavigationIconSelector } from "@mad-land/lib/";
+import { MAD_LADS_LOGO, NavItem, NavigationIconSelector } from "@mad-dash/lib/";
 import Link from "next/link";
 import { SocialIcon } from "react-social-icons";
 

@@ -1,10 +1,10 @@
-import { useGetMadLadsHolders, useGetUserTokens } from "@mad-land/lib";
+import { useGetMadLadsHolders, useGetUserTokens } from "@mad-dash/lib";
 import {
   CollectionHolderSspType,
   getHoldersByCollection,
-} from "@mad-land/lib/helpers/server-side-props/";
-import { AirdropPage, StandardMadLandPageContainer } from "@mad-land/ui";
-import { useSessionAddress } from "@mad-land/ui/hooks/use-session-address";
+} from "@mad-dash/lib/helpers/server-side-props/";
+import { AirdropPage, StandardMadLandPageContainer } from "@mad-dash/ui";
+import { useSessionAddress } from "@mad-dash/ui/hooks/use-session-address";
 
 const Airdropper = (serverSideProps: CollectionHolderSspType) => {
   const { address: userAddress } = useSessionAddress();

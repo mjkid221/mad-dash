@@ -1,7 +1,7 @@
 import "@total-typescript/ts-reset";
 import { ChakraProvider } from "@chakra-ui/react";
-import { SOLANA_RPC_PROVIDER } from "@mad-land/lib";
-import { Navbar, theme } from "@mad-land/ui";
+import { SOLANA_RPC_PROVIDER } from "@mad-dash/lib";
+import { Navbar, theme } from "@mad-dash/ui";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import {
   ConnectionProvider,
@@ -46,8 +46,8 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
             <WalletModalProvider>
               <ChakraProvider theme={theme}>
                 <Head>
-                  <title>Mad Land</title>
-                  <link rel="shortcut icon" href="/mad-land-favicon.ico" />
+                  <title>Mad Dash</title>
+                  <link rel="shortcut icon" href="/mad-dash-favicon.ico" />
                 </Head>
                 <Analytics />
                 <Navbar />

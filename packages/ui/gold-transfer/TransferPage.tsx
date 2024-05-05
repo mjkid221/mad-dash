@@ -1,5 +1,5 @@
 import { Flex, IconButton } from "@chakra-ui/react";
-import { MadLadsNft } from "@mad-land/lib";
+import { MadLadsNft } from "@mad-dash/lib";
 import { AiOutlineSwapRight } from "react-icons/ai";
 
 import { TransferCardSection } from "./TransferCardSection";

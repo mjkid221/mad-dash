@@ -1,9 +1,9 @@
 import {
   apiHandler,
   madLadsCollectionRarityRequestSchema,
-} from "@mad-land/lib";
-import { aggregateMadLadsCollectionData } from "@mad-land/lib/api/handlers/nft/";
-import { database, cors } from "@mad-land/lib/middleware";
+} from "@mad-dash/lib";
+import { aggregateMadLadsCollectionData } from "@mad-dash/lib/api/handlers/nft/";
+import { database, cors } from "@mad-dash/lib/middleware";
 
 export default apiHandler()
   .all(cors)

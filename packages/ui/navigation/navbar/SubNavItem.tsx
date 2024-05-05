@@ -1,6 +1,6 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Center, Link, Text, forwardRef } from "@chakra-ui/react";
-import { NavItem } from "@mad-land/lib";
+import { NavItem } from "@mad-dash/lib";
 import { useRouter } from "next/router";
 
 export type NavItemProps = {
@@ -27,7 +27,7 @@ export const SubNavItem = forwardRef(
           height="35px"
           padding="0px 12px"
           margin="0px 8px"
-          bgColor="rgb(24 1 1 / 0.5)"
+          bgColor="transparentRed"
           borderRadius="full"
           border={`1px ${
             isSelected ? "rgb(229, 231, 235)" : "transparent"

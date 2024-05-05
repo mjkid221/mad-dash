@@ -5,12 +5,12 @@ import {
   UnableToImportCollectionSnapshot,
   apiHandler,
   SupportedCollection,
-} from "@mad-land/lib";
+} from "@mad-dash/lib";
 import {
   CollectionHolderModel,
   NftCollectionModel,
-} from "@mad-land/lib/database/models";
-import { database, cors, secretKeyAuth } from "@mad-land/lib/middleware";
+} from "@mad-dash/lib/database/models";
+import { database, cors, secretKeyAuth } from "@mad-dash/lib/middleware";
 import mongoose from "mongoose";
 import { NextApiHandler } from "next";
 

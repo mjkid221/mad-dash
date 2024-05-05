@@ -9,20 +9,25 @@ import {
   useDisclosure,
   Text,
 } from "@chakra-ui/react";
-import { LadBadge, MadLadsNft } from "@mad-land/lib";
+import { LadBadge, MadLadsNft } from "@mad-dash/lib";
 import { JsonMetadata } from "@metaplex-foundation/js";
 import { motion } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { Blurhash } from "react-blurhash";
 import { EffectCards } from "swiper/modules";
 import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 
-import { madLadBadgeInfo } from "../constants";
+import { GoldPoints } from "../components";
+import { madLadBadgeInfo, SupportedMarketplace } from "../constants";
 import {
   DraggableGrid,
   StandardContainer,
+  StandardIconButton,
+  StandardTextWrapper,
   TitledStandardContainer,
 } from "../shared";
+
+import { ArBadge } from "./ArBadge";
 
 const getCardGradient = (rank: number) => {
   const baseGradient =
@@ -71,33 +76,61 @@ export const TransferCardSection = ({
     setImagesLoaded((prev) => ({ ...prev, [index]: true }));
   };
 
-  const gridItems =
-    userNfts[activeIndex]?.badges?.map((badge) => ({
-      id: badge,
-      child: (
-        <Box
-          boxSize="75px"
-          className="items"
-          bgColor="rgb(24 1 1 / 0.5)"
-          borderRadius="12px"
-          _hover={{
-            transform: "scale(1.05)",
-            cursor: "pointer",
-          }}
-          transition="transform 0.4s ease-in-out"
-          onClick={() => {
-            setActiveBadge(badge);
-            onOpen();
-          }}
-        >
-          <Image src={madLadBadgeInfo[badge].src} draggable={false} />
-        </Box>
-      ),
-    })) ?? [];
+  const gridItems = useMemo(
+    () =>
+      userNfts[activeIndex]?.badges?.map((badge) => ({
+        id: badge,
+        child: (
+          <Box
+            boxSize="75px"
+            bgColor="transparentRed"
+            borderRadius="12px"
+            _hover={{
+              transform: "scale(1.05)",
+              cursor: "pointer",
+            }}
+            transition="transform 0.4s ease-in-out"
+            onClick={(e) => {
+              e.preventDefault();
+              setActiveBadge(badge);
+              onOpen();
+            }}
+          >
+            <Image src={madLadBadgeInfo[badge].src} draggable={false} />
+          </Box>
+        ),
+      })) ?? [],
+    [activeIndex, onOpen, userNfts]
+  );
 
   return (
     <StandardContainer overflow="hidden">
-      <StandardContainer>hi</StandardContainer>
+      <StandardContainer>
+        <StandardTextWrapper>
+          <Text>{userNfts[activeIndex]?.name ?? "N/A"}</Text>
+          <GoldPoints goldPoints={userNfts[activeIndex]?.goldPoints} />
+          <Flex gap="8px">
+            {Object.values(SupportedMarketplace).map((marketplace) => (
+              <StandardIconButton
+                imgSrc={marketplace.logoSrc}
+                onClick={() => {
+                  // eslint-disable-next-line no-param-reassign -- ignore
+                  window.open(
+                    new URL(
+                      userNfts[activeIndex].mintAddress?.toString() ?? "",
+                      marketplace.itemUrl
+                    ),
+                    "_blank"
+                  );
+                }}
+              />
+            ))}
+          </Flex>
+        </StandardTextWrapper>
+        <StandardTextWrapper>
+          {userNfts[activeIndex]?.wormholeVestingBalance}
+        </StandardTextWrapper>
+      </StandardContainer>
       <Flex
         justifyContent="space-between"
         gap="40px"
@@ -126,28 +159,32 @@ export const TransferCardSection = ({
                 >
                   <Flex width="100%" height="100%" p="2px">
                     <Flex overflow="hidden" borderRadius="15px">
-                      {nft?.imageBlurhash && (
-                        <Blurhash
-                          hash={nft?.imageBlurhash}
-                          width="250px"
+                      <Flex zIndex="1">
+                        <motion.img
+                          // eslint-disable-next-line no-return-assign -- allow for this instance
+                          ref={(el) => (imageRefs.current[index] = el)}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: imagesLoaded[index] ? 1 : 0 }}
+                          transition={{ opacity: { duration: 0.4 } }}
+                          onLoad={() => onLoaded(index)}
+                          src={
+                            (nft as JsonMetadata).image ??
+                            "https://placehold.co/1000x1000"
+                          }
+                          loading="lazy"
+                          width="100%"
                           height="100%"
                         />
+                      </Flex>
+                      {nft?.imageBlurhash && !imagesLoaded[index] && (
+                        <Flex>
+                          <Blurhash
+                            hash={nft?.imageBlurhash}
+                            width="250px"
+                            height="100%"
+                          />
+                        </Flex>
                       )}
-                      <motion.img
-                        // eslint-disable-next-line no-return-assign -- allow for this instance
-                        ref={(el) => (imageRefs.current[index] = el)}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: imagesLoaded[index] ? 1 : 0 }}
-                        transition={{ opacity: { duration: 0.4 } }}
-                        onLoad={() => onLoaded(index)}
-                        src={
-                          (nft as JsonMetadata).image ??
-                          "https://placehold.co/1000x1000"
-                        }
-                        loading="lazy"
-                        width="100%"
-                        height="100%"
-                      />
                     </Flex>
                   </Flex>
                 </SwiperSlide>
@@ -167,18 +204,25 @@ export const TransferCardSection = ({
             flexDir="column"
             padding="16px"
           >
-            <DraggableGrid gridItems={gridItems} />
+            <DraggableGrid key={activeIndex} gridItems={gridItems} />
           </Flex>
         </TitledStandardContainer>
       </Flex>
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay backdropFilter="blur(5px)" />
-        <ModalContent
-          bg="transparent"
-          border="1px #4e3e3e solid"
-          borderRadius="16px"
-        >
-          <Flex padding="12px 16px" flexDir="column" gap="12px">
+        <ModalContent bg="transparent" borderRadius="16px">
+          <Flex height="300px">
+            <ArBadge imgSrc={madLadBadgeInfo[activeBadge].src} />
+          </Flex>
+          <Flex
+            padding="12px 16px"
+            flexDir="column"
+            gap="12px"
+            border="1px #4e3e3e solid"
+            borderRadius="16px"
+            bg="transparentRed"
+            color="white"
+          >
             <Flex
               flexDir="row"
               gap="8px"

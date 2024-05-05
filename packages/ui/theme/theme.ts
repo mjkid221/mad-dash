@@ -6,7 +6,7 @@ import { colors } from "./colors";
 import { fonts } from "./fonts";
 
 const config: ThemeConfig = {
-  initialColorMode: "light",
+  initialColorMode: "dark",
   useSystemColorMode: false,
 };
 

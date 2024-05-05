@@ -4,7 +4,7 @@ import {
   SiwsMessageOptions,
   SiwsProvider,
   generateUrl,
-} from "@mad-land/lib";
+} from "@mad-dash/lib";
 import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";

@@ -1,0 +1,18 @@
+diff --git a/node_modules/@react-three/fiber/dist/declarations/src/three-types.d.ts b/node_modules/@react-three/fiber/dist/declarations/src/three-types.d.ts
+index 7668a42..d3da99d 100644
+--- a/node_modules/@react-three/fiber/dist/declarations/src/three-types.d.ts
++++ b/node_modules/@react-three/fiber/dist/declarations/src/three-types.d.ts
+@@ -386,7 +386,12 @@ export interface ThreeElements {
+ }
+ declare global {
+     namespace JSX {
+-        interface IntrinsicElements extends ThreeElements {
++        interface IntrinsicElements {
++            planeGeometry: PlaneGeometryProps;
++            meshBasicMaterial: MeshBasicMaterialProps;
++            ambientLight: AmbientLightProps;
++            pointLight: PointLightProps;
++            mesh: MeshProps;
+         }
+     }
+ }

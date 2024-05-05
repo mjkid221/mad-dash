@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
-import { GetCollectionHoldersQuery } from "@mad-land/lib";
-import { CollectionHolderSspType } from "@mad-land/lib/helpers/server-side-props/";
+import { GetCollectionHoldersQuery } from "@mad-dash/lib";
+import { CollectionHolderSspType } from "@mad-dash/lib/helpers/server-side-props/";
 
 import { AirdropTokenSelectorCard } from "./AirdropTokenSelectorCard";
 import { HolderSnapshotCardComponent } from "./HolderSnapshotCard";

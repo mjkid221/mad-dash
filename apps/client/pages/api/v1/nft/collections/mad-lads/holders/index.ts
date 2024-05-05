@@ -1,6 +1,6 @@
-import { ResourceNotFound, apiHandler } from "@mad-land/lib";
-import { aggregateMadLadsHoldersData } from "@mad-land/lib/api/handlers/nft";
-import { database, cors } from "@mad-land/lib/middleware";
+import { ResourceNotFound, apiHandler } from "@mad-dash/lib";
+import { aggregateMadLadsHoldersData } from "@mad-dash/lib/api/handlers/nft";
+import { database, cors } from "@mad-dash/lib/middleware";
 import { PublicKey } from "@solana/web3.js";
 import { NextApiHandler } from "next";
 import { getToken } from "next-auth/jwt";

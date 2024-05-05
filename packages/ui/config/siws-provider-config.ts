@@ -1,6 +1,5 @@
-import { SiwsMessageOptions } from "@mad-land/lib";
+import { SiwsMessageOptions } from "@mad-dash/lib";
 
 export const siwsOptions: Partial<SiwsMessageOptions> = {
-  statement:
-    "Sign in to Mad Land to verify your identity.\n \nBy signing in, you agree to Mad Land's Terms of Service and Privacy Policy. \n \n Signature: \n",
+  statement: "Sign in to Mad Dash to verify your identity.\n \n Signature: \n",
 };

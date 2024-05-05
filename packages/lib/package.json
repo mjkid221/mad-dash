@@ -1,12 +1,13 @@
 {
-  "name": "@mad-land/lib",
+  "name": "@mad-dash/lib",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
     "test": "env INTEGRATION_TEST_MODE=true TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
-    "script:wormhole": "ts-node scripts/add-badges.ts"
+    "script:wormhole": "ts-node scripts/add-badges.ts",
+    "postinstall": "cd ../../ && yarn run patch:packages"
   },
   "author": "",
   "license": "ISC",
@@ -30,11 +31,12 @@
     "mongoose": "^7.3.1",
     "next-connect": "0.13.0",
     "papaparse": "^5.4.1",
+    "patch-package": "^8.0.0",
     "superjson": "^1.13.1",
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@mad-land/tsconfig": "*",
+    "@mad-dash/tsconfig": "*",
     "@typegoose/typegoose": "^9.7.1",
     "@types/chai": "^4.3.5",
     "@types/http-errors": "^2.0.1",

@@ -4,7 +4,7 @@ import {
   Stack,
   PopoverContentProps,
 } from "@chakra-ui/react";
-import { NavItem } from "@mad-land/lib/constants/navigation";
+import { NavItem } from "@mad-dash/lib/constants/navigation";
 
 import { SubNavigation } from "./SubNavigation";
 

@@ -1,6 +1,6 @@
 import { chakra, Flex } from "@chakra-ui/react";
-import { NAVBAR_HEIGHT } from "@mad-land/lib";
-import { DesktopNav } from "@mad-land/ui";
+import { NAVBAR_HEIGHT } from "@mad-dash/lib";
+import { DesktopNav } from "@mad-dash/ui";
 import { ReactNode } from "react";
 
 export const Navbar = () => (

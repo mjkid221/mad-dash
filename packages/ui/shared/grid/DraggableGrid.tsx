@@ -20,8 +20,8 @@ export const DraggableGrid = ({ gridItems }: { gridItems: GridItem[] }) => {
       style={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(75px, 1fr))",
-        gap: "8px",
-        justifyItems: "center",
+        gap: "16px",
+        justifyItems: gridItems.length === 1 ? "left" : "center",
       }}
     >
       {items.map(({ id, child }) => (

@@ -1,5 +1,5 @@
 import { Flex, chakra, Popover, PopoverTrigger, Box } from "@chakra-ui/react";
-import { navigationItems } from "@mad-land/lib";
+import { navigationItems } from "@mad-dash/lib";
 import { useRouter } from "next/router";
 
 import { BackpackConnectButton } from "../../shared";

@@ -17,7 +17,7 @@ export const getMadLadsHolders = async () => {
     BaseCollectionHoldersFetchResponse[]
   >("/nft/collections/mad-lads/holders");
 
-  return data.slice(0, 50);
+  return data;
 };
 
 export const useGetMadLadsHolders = (): GetCollectionHoldersQuery => {

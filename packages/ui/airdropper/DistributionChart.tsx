@@ -1,5 +1,5 @@
 import { Flex, FlexProps } from "@chakra-ui/react";
-import { AirdropDistributionResult, useTokenSelectStore } from "@mad-land/lib";
+import { AirdropDistributionResult, useTokenSelectStore } from "@mad-dash/lib";
 import { Chart as ChartJS, ArcElement, Tooltip } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 

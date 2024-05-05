@@ -1,5 +1,5 @@
 {
-  "extends": "@mad-land/tsconfig/base.json",
+  "extends": "@mad-dash/tsconfig/base.json",
   "include": ["./"],
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {

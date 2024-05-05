@@ -14,8 +14,8 @@ import {
   UserTokensType,
   formatAddress,
   useTokenSelectStore,
-} from "@mad-land/lib";
-import { CollectionHolderSspType } from "@mad-land/lib/helpers/server-side-props";
+} from "@mad-dash/lib";
+import { CollectionHolderSspType } from "@mad-dash/lib/helpers/server-side-props";
 import { UseFormReturn, Controller } from "react-hook-form";
 
 export const TokenSelector = ({

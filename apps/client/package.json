@@ -1,5 +1,5 @@
 {
-  "name": "@mad-land/client",
+  "name": "@mad-dash/client",
   "description": "Nextjs client for repo",
   "version": "0.0.0",
   "private": true,
@@ -8,16 +8,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "env INTEGRATION_TEST_MODE=true TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register -r tsconfig-paths/register 'tests/**/*.ts'"
+    "test": "env INTEGRATION_TEST_MODE=true TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register -r tsconfig-paths/register 'tests/**/*.ts'",
+    "postinstall": "cd ../../ && yarn run patch:packages"
   },
   "dependencies": {
     "@chakra-ui/next-js": "^2.1.4",
     "@chakra-ui/react": "^2.7.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@mad-land/contracts": "*",
-    "@mad-land/lib": "*",
-    "@mad-land/ui": "*",
+    "@mad-dash/contracts": "*",
+    "@mad-dash/lib": "*",
+    "@mad-dash/ui": "*",
     "@sentry/nextjs": "^7.77.0",
     "@solana-mobile/wallet-adapter-mobile": "^2.1.2",
     "@solana/wallet-adapter-base": "^0.9.23",
@@ -34,6 +35,7 @@
     "next-auth": "^4.24.6",
     "next-connect": "0.13.0",
     "nextjs-progressbar": "^0.0.16",
+    "patch-package": "^8.0.0",
     "react": "18.2.0",
     "react-animated-cursor": "^2.11.2",
     "react-dom": "18.2.0",
@@ -41,7 +43,7 @@
     "zustand": "^4.4.6"
   },
   "devDependencies": {
-    "@mad-land/tsconfig": "*",
+    "@mad-dash/tsconfig": "*",
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
     "@types/node": "^18.11.18",

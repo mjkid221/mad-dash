@@ -1,5 +1,5 @@
-import { getCollectionInfoByUser } from "@mad-land/lib/helpers/server-side-props";
-import { StandardMadLandPageContainer, TransferPage } from "@mad-land/ui";
+import { getCollectionInfoByUser } from "@mad-dash/lib/helpers/server-side-props";
+import { StandardMadLandPageContainer, TransferPage } from "@mad-dash/ui";
 import { InferGetServerSidePropsType } from "next";
 
 const GoldTransfer = ({

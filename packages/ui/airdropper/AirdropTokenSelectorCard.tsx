@@ -8,8 +8,8 @@ import {
   useComputeAirdropDistribution,
   useDistributeAirdrop,
   useTokenSelectStore,
-} from "@mad-land/lib";
-import { CollectionHolderSspType } from "@mad-land/lib/helpers/server-side-props";
+} from "@mad-dash/lib";
+import { CollectionHolderSspType } from "@mad-dash/lib/helpers/server-side-props";
 import { useQueryClient } from "@tanstack/react-query";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { toast } from "react-toastify";

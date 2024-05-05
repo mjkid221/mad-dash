@@ -1,6 +1,11 @@
 module.exports = {
   reactStrictMode: true,
-  transpilePackages: ["@mad-land/ui", "@mad-land/lib", "@mad-land/contracts"],
+  transpilePackages: [
+    "@mad-dash/ui",
+    "@mad-dash/lib",
+    "@mad-dash/contracts",
+    "three",
+  ],
 };
 
 // Injected content via Sentry wizard below
@@ -17,9 +22,9 @@ module.exports = withSentryConfig(
     silent: true,
 
     // You can get this from the Organization settings page in Sentry
-    org: "avalon-labs-dp",
+    org: "aurion-labs-dp",
     // You can get this from the Project settings page in Sentry
-    project: "mad-land",
+    project: "mad-dash",
     authToken: process.env.SENTRY_AUTH_TOKEN,
   },
   {

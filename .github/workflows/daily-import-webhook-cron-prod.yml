@@ -11,5 +11,5 @@ jobs:
       - name: Import Mad Lads Collection Holders Snapshot
         run: |
           curl --request GET \
-          --url 'https://mad-land-client.vercel.app/api/v1/webhooks/snapshot/holders/mad-lads' \
+          --url 'https://mad-dash.vercel.app/api/v1/webhooks/snapshot/holders/mad-lads' \
           --header 'Authorization: Bearer ${{ secrets.ACTIONS_CRON_SECRET }}'

@@ -1,4 +1,4 @@
-import { MockMemoryServer } from "@mad-land/lib/tests";
+import { MockMemoryServer } from "@mad-dash/lib/tests";
 import server from "nextjs-http-supertest";
 
 /**

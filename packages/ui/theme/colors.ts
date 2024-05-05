@@ -44,4 +44,6 @@ export const colors: Record<string, ColorHues | string> = {
     "800": "#505050",
     "900": "#1B1B1B",
   },
+  transparentRed: "rgb(24 1 1 / 0.5)",
+  transparentGray: "rgb(27 27 27 / 0.5)",
 };

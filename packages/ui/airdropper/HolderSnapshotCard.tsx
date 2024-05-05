@@ -4,8 +4,8 @@ import {
   exportData,
   formatDateForUI,
   generateBlockExplorerLink,
-} from "@mad-land/lib";
-import { CollectionHolderSspType } from "@mad-land/lib/helpers/server-side-props";
+} from "@mad-dash/lib";
+import { CollectionHolderSspType } from "@mad-dash/lib/helpers/server-side-props";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { StandardSkeleton } from "../components";
@@ -73,7 +73,7 @@ export const HolderSnapshotCardComponent = ({
                   <Flex
                     key={holder.userAddress}
                     flexDir="row"
-                    bgColor={isUserHolder ? "red.500" : "rgb(24 1 1 / 0.5)"}
+                    bgColor={isUserHolder ? "red.500" : "transparentRed"}
                     p="8px"
                     borderRadius="8px"
                     justifyContent="space-between"

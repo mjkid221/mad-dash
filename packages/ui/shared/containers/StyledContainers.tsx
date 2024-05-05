@@ -1,5 +1,5 @@
 import { Flex, FlexProps, chakra } from "@chakra-ui/react";
-import { MAD_LADS_LOGO, NAVBAR_HEIGHT } from "@mad-land/lib";
+import { MAD_LADS_LOGO, NAVBAR_HEIGHT } from "@mad-dash/lib";
 import { ReactNode } from "react";
 
 export const StandardPageContainer = chakra(Flex, {

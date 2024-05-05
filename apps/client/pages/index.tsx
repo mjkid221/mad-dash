@@ -1,5 +1,5 @@
-import { MAD_LADS_LOGO } from "@mad-land/lib";
-import { StandardPageContainer } from "@mad-land/ui/shared";
+import { MAD_LADS_LOGO } from "@mad-dash/lib";
+import { StandardPageContainer } from "@mad-dash/ui/shared";
 import { NextPage } from "next";
 
 const HomePage: NextPage = () => (

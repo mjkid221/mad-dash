@@ -10,6 +10,7 @@ import { connect } from "../../database";
 import { MadLadsService, MetaplexService } from "../../services";
 import { MadLadsNft, StandardNftType } from "../../types";
 import { propsParser } from "../../utils";
+import { formatWithWBalance } from "../solana";
 
 export const getCollectionInfoByUser = async (
   context: GetServerSidePropsContext
@@ -37,11 +38,18 @@ export const getCollectionInfoByUser = async (
     })) as MadLadsNft[];
 
     const mint = userNfts.map((nft) => pickMintAddress(nft));
-
     const metadataList = await aggregateMadLadsCollectionData({ mint });
+
     const updatedUserNfts = (
       await Promise.all(
         userNfts.map(async (nft) => {
+          const queryKey = {
+            user: new PublicKey(userAddress),
+            nft: {
+              mintAddress: (nft as Metadata).mintAddress,
+              metadataAddress: nft.address,
+            },
+          };
           await Promise.all([
             new Promise<void>((resolve) => {
               const metadata = metadataList.find(
@@ -50,23 +58,16 @@ export const getCollectionInfoByUser = async (
               nft.rank = metadata?.rank ?? 0;
               nft.imageBlurhash = metadata?.imageBlurhash;
               nft.badges = metadata?.badges;
+              nft.wormholeVestingPubkey = metadata?.wormholeVestingPubkey;
               resolve();
             }),
             MadLadsService.getGoldPoints({
-              user: new PublicKey(userAddress),
-              nft: {
-                mintAddress: (nft as Metadata).mintAddress,
-                metadataAddress: nft.address,
-              },
+              ...queryKey,
             }).then((goldPoints) => {
               nft.goldPoints = goldPoints;
             }),
             MadLadsService.isStaked({
-              user: new PublicKey(userAddress),
-              nft: {
-                mintAddress: (nft as Metadata).mintAddress,
-                metadataAddress: nft.address,
-              },
+              ...queryKey,
             }).then((isStaked) => {
               nft.isStaked = isStaked;
             }),
@@ -77,7 +78,7 @@ export const getCollectionInfoByUser = async (
     ).sort((a, b) => b.rank! - a.rank!);
     return {
       props: {
-        userNfts: propsParser(updatedUserNfts),
+        userNfts: propsParser(await formatWithWBalance(updatedUserNfts)),
       },
     };
   } catch (err) {
